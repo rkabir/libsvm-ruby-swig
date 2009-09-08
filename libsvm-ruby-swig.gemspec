@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-09-08}
   s.description = %q{Ruby wrapper of LIBSVM using SWIG}
   s.email = ["tom.z.zeng@gmail.com"]
+  s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt"]
   s.files = ["History.txt", "COPYING", "AUTHORS", "Manifest.txt", "README.rdoc", "Rakefile", "lib/svm.rb", "ext/libsvm_wrap.cxx", "ext/svm.cpp", "ext/svm.h", "ext/extconf.rb", "ext/Makefile"]
   s.homepage = %q{http://www.tomzconsulting.com}

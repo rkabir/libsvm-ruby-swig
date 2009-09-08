@@ -14,7 +14,7 @@ $hoe = Hoe.spec 'libsvm-ruby-swig' do
   self.version = '0.3.3'
   self.url = 'http://www.tomzconsulting.com'
   self.description = 'Ruby wrapper of LIBSVM using SWIG'
-  
+  self.spec_extras[:extensions] = "ext/extconf.rb"
 end
 
 
