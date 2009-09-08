@@ -1,25 +1,26 @@
 require 'rubygems'
-gem 'hoe', '>=1.8.3','<= 1.12.2'
+gem 'hoe', '>= 2.1.0'
 require 'hoe'
+require 'fileutils'
+
+Hoe.plugin :newgem
+
+# Run 'rake -T' to see list of generated tasks (from gem root directory)
+$hoe = Hoe.spec 'libsvm-ruby-swig' do
+  self.developer 'Tom Zeng', 'tom.z.zeng@gmail.com'
+  # self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
+  self.rubyforge_name       = nil # TODO this is default value
+  # self.extra_deps         = [['activesupport','>= 2.0.2']]
+  self.version = '0.3.3'
+  self.url = 'http://www.tomzconsulting.com'
+  self.description = 'Ruby wrapper of LIBSVM using SWIG'
+  
+end
+
 
 task :default => ["sync_files","make_gem"] 
 
-EXT = "ext/svm?.#{Hoe::DLEXT}"
-
-Hoe.new('libsvm-ruby-swig', '0.3.3') do |p|
-  p.author = 'Tom Zeng'
-  p.email = 'tom.z.zeng@gmail.com'
-  p.url = 'http://www.tomzconsulting.com'
-  p.summary = 'Ruby wrapper of LIBSVM using SWIG'
-  p.description = 'Ruby wrapper of LIBSVM using SWIG'
-  
-  p.spec_extras[:extensions] = "ext/extconf.rb"
-  p.clean_globs << EXT << "ext/*.o" << "ext/Makefile"
-end
-
-task :make_gem => EXT
-
-file EXT => ["ext/extconf.rb", "ext/libsvm_wrap.cxx", "ext/svm.cpp", "ext/svm.h"] do
+task :make_gem do
   Dir.chdir "ext" do
     ruby "extconf.rb"
     sh "make"
