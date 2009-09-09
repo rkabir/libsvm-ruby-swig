@@ -2,12 +2,20 @@ CXX? = g++
 SWIG ?= swig
 
 #Windows: see ../README ../Makefile.win
-RUBY_INCLUDEDIR ?= /usr/lib/ruby/1.8/universal-darwin9.0/
 
-CFLAGS = -O3 -I$(RUBY_INCLUDEDIR) -I.. -arch i386
+# RUBY_INCLUDEDIR ?= /usr/lib/ruby/1.8/universal-darwin9.0/
+RUBY_INCLUDEDIR ?= /System/Library/Frameworks/Ruby.framework/Versions/1.8/Headers/
+
+# choose one of the following (only i386 has been tested, you may want x86_64 for Snow Leopard):
+TARGET_ARCH ?= -arch i386
+# TARGET_ARCH ?= -arch ppc
+# TARGET_ARCH ?= -arch x86_64
+# TARGET_ARCH ?= -arch i386 -arch x86_64
+
+CFLAGS = -O3 -I$(RUBY_INCLUDEDIR) -I.. $(TARGET_ARCH)
 #LDFLAGS = -shared
 # Mac OS
-LDFLAGS = -framework Ruby -bundle
+LDFLAGS = -framework Ruby -bundle $(TARGET_ARCH)
 
 all: libsvm.bundle
 
