@@ -8,11 +8,13 @@ Hoe.plugin :newgem
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'libsvm-ruby-swig' do
   self.developer 'Tom Zeng', 'tom.z.zeng@gmail.com'
+  self.developer 'Mariano Lizarraga', 'mariano.lizarraga@plastictrophy.com'
+  self.developer 'Galen O\'Hanlon', 'galen.ohanlon@plastictrophy.com'
   # self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   self.rubyforge_name       = nil # TODO this is default value
   # self.extra_deps         = [['activesupport','>= 2.0.2']]
-  self.version = '0.3.3'
-  self.url = 'http://www.tomzconsulting.com'
+  self.version = '0.3.3.2009081423'
+  self.url = 'http://www.plastictrophy.com'
   self.description = 'Ruby wrapper of LIBSVM using SWIG'
   self.spec_extras[:extensions] = "ext/extconf.rb"
 end
