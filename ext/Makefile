@@ -7,10 +7,10 @@ SWIG ?= swig
 RUBY_INCLUDEDIR ?= /System/Library/Frameworks/Ruby.framework/Versions/1.8/Headers/
 
 # choose one of the following (only i386 has been tested, you may want x86_64 for Snow Leopard):
-TARGET_ARCH ?= -arch i386
+# TARGET_ARCH ?= -arch i386
 # TARGET_ARCH ?= -arch ppc
 # TARGET_ARCH ?= -arch x86_64
-# TARGET_ARCH ?= -arch i386 -arch x86_64
+TARGET_ARCH ?= -arch i386 -arch x86_64
 
 CFLAGS = -O3 -I$(RUBY_INCLUDEDIR) -I.. $(TARGET_ARCH)
 #LDFLAGS = -shared
